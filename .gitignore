@@ -179,3 +179,4 @@ cython_debug/
 # pytorch models
 *.pt
 *.png/data/
+/data
