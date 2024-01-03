@@ -1,11 +1,13 @@
-from matplotlib import pyplot as plt
-import torch
-from MNIST_CNN import MyAwesomeModel
-from MNIST_CNN.data.make_dataset import get_train_loaders
-from tqdm import tqdm
 import click
+import torch
+from matplotlib import pyplot as plt
+from tqdm import tqdm
 
-def train(lr, e,checkpoint):
+from MNIST_CNN import MyAwesomeModel
+from MNIST_CNN import get_train_loaders
+
+
+def train(lr, e, checkpoint):
     """Train a model on MNIST."""
     print("Training day and night")
     print("lr, ", lr)
@@ -14,7 +16,7 @@ def train(lr, e,checkpoint):
     model = MyAwesomeModel()
     train_dataloader, _ = get_train_loaders()
 
-    discrim = torch.nn.NLLLoss() #torch.nn.CrossEntropyLoss()
+    discrim = torch.nn.NLLLoss()  # torch.nn.CrossEntropyLoss()
     optim = torch.optim.Adam(model.parameters(), lr=lr)
     train_losses = []
 
@@ -31,22 +33,24 @@ def train(lr, e,checkpoint):
             optim.step()
             epoch_loss += loss.item()
 
-        train_losses.append(epoch_loss/len(train_dataloader))
+        train_losses.append(epoch_loss / len(train_dataloader))
         # update tqdm bar value with loss for last epoch
         tqdm.write(f"Epoch {epoch} done, loss: {epoch_loss/len(train_dataloader)}")
 
-    torch.save(model.state_dict(), f'{checkpoint}')
+    torch.save(model.state_dict(), f"{checkpoint}")
 
     # plot loss
-    plt.plot(train_losses, label='Training loss')
-    plt.savefig('reports/figures/loss.png')
+    plt.plot(train_losses, label="Training loss")
+    plt.savefig("reports/figures/loss.png")
+
 
 @click.command()
 @click.option("--lr", default=1e-3, help="learning rate to use for training")
 @click.option("--e", default=5, help="Number of epochs to train for")
 @click.option("--checkpoint", default="checkpoint.pt", help="checkpoint  path")
-def main(lr, e,checkpoint):
-    train(lr, e,checkpoint)
+def main(lr, e, checkpoint):
+    train(lr, e, checkpoint)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

@@ -1,13 +1,15 @@
-#%%
+# %%
 import glob
+
 import torch
 from torchvision import transforms
+
 
 def process_data():
     """Return train and test dataloaders for MNIST."""
     data_folder = "/Users/christian/Documents/School/DTU Human Centered Artificial Intelligence/Machine Learning Operations/MNIST_CNN/data/raw/corruptmnist"
     train, test = [], []
-    
+
     # loads all files in the folder with start train_images_*.pt
     train_images_files = glob.glob(data_folder + "/train_images_*.pt")
     train_targets_files = glob.glob(data_folder + "/train_target_*.pt")
@@ -34,6 +36,7 @@ def process_data():
 
     return train_images, train_target, test_images, test_target
 
+
 def get_train_loaders():
     """Return train and test dataloaders for MNIST."""
 
@@ -42,20 +45,17 @@ def get_train_loaders():
     train_target = torch.load("data/processed/corruptmnist/train_target.pt")
     test_images = torch.load("data/processed/corruptmnist/test_images.pt")
     test_target = torch.load("data/processed/corruptmnist/test_target.pt")
-    
+
     train_loader = torch.utils.data.DataLoader(
-        torch.utils.data.TensorDataset(train_images, train_target),
-        batch_size=64,
-        shuffle=True
+        torch.utils.data.TensorDataset(train_images, train_target), batch_size=64, shuffle=True
     )
     test_loader = torch.utils.data.DataLoader(
-        torch.utils.data.TensorDataset(test_images, test_target),
-        batch_size=64,
-        shuffle=False
+        torch.utils.data.TensorDataset(test_images, test_target), batch_size=64, shuffle=False
     )
     return train_loader, test_loader
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # Get the data and process it
     print("Processing data...")
     train_images, train_target, test_images, test_target = process_data()

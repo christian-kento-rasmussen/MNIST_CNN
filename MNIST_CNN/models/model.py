@@ -1,5 +1,6 @@
-from torch import nn
 import torch.nn.functional as F
+from torch import nn
+
 
 class MyAwesomeModel(nn.Module):
     """My awesome model."""
@@ -15,7 +16,7 @@ class MyAwesomeModel(nn.Module):
 
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(p=0.2)
-    
+
     def forward(self, x):
         """Forward pass."""
         x = self.relu(self.cnn1(x))
