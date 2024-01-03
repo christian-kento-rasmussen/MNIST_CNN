@@ -40,6 +40,10 @@ clean:
 data: requirements
 	$(PYTHON_INTERPRETER) $(PROJECT_NAME)/data/make_dataset.py
 
+## Train the model
+train:
+	$(PYTHON_INTERPRETER) MNIST_CNN/train_model.py --e $(epoch) --checkpoint $(save_path)
+
 #################################################################################
 # Documentation RULES                                                           #
 #################################################################################
