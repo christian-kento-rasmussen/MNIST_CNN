@@ -7,7 +7,7 @@ from torchvision import transforms
 
 def process_data():
     """Return train and test dataloaders for MNIST."""
-    data_folder = "/Users/christian/Documents/School/DTU Human Centered Artificial Intelligence/Machine Learning Operations/MNIST_CNN/data/raw/corruptmnist"
+    data_folder = "data/raw/corruptmnist"
     train, test = [], []
 
     # loads all files in the folder with start train_images_*.pt
