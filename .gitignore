@@ -180,3 +180,4 @@ cython_debug/
 *.pt
 *.png/data/
 /data
+reports/figures/loss.png

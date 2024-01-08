@@ -3,8 +3,7 @@ import torch
 from matplotlib import pyplot as plt
 from tqdm import tqdm
 
-from MNIST_CNN import MyAwesomeModel
-from MNIST_CNN import get_train_loaders
+from MNIST_CNN import MyAwesomeModel, get_train_loaders
 
 
 def train(lr, e, checkpoint):
