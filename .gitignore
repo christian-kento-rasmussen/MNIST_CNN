@@ -181,3 +181,4 @@ cython_debug/
 *.png/data/
 /data
 reports/figures/loss.png
+/models
