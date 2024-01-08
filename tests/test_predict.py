@@ -13,12 +13,9 @@ def test_predict():
     model = MyAwesomeModel()
     model.load_state_dict(model_state_dict)
 
-
     # load data loader
     train_loader, test_loader = get_train_loaders()
-    
+
     output = predict(model, test_loader)
 
     assert output is not None, "output should not be None"
-
-
